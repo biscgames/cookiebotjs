@@ -8,7 +8,7 @@ const POWER_USRNAME = [
 ];
 
 const fs = require('fs');
-const { token } = require("./config.json");
+const token = process.env.BOT_TOKEN;
 const { Client, Events, GatewayIntentBits } = require("discord.js");
 let cookies = require("./userdata.json");
 
