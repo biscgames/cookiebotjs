@@ -16,4 +16,5 @@ Reminder that this is for NodeJS environments only!
 **!bal**: use this alone to get your balance in the bank and in the server
 **!shutdown**: shuts down the bot safely; this saves data to the mentioned userdata.json file making this the safe way since only users with their userid on the admin list can use this
 **!selfcookie [amount\]**: gives free cookies! you can get either 1 cookie or get an amount of cookies using the optional argument! (Only those with their userid on the list can use this)
-**!adminid**: lists all IDs that can use certain commands (like !shutdown or !selfcookie)
+**!adminid**: lists all IDs that can use certain commands (like !shutdown or !selfcookie)<br/>
+**!addadmin <id> [username\]**: gives a user access to certain commands like !shutdown and !selfcookie! you can also give it an optional argument for username so it'll show up in !adminid!
