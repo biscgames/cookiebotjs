@@ -164,6 +164,9 @@ client.on(Events.MessageCreate,async(msg)=>{
         }
         msg.channel.send(stringList);
     }
+    if (command === "!help") {
+        msg.reply("Hello! [Please read the github readme for a list of commmands here!](https://github.com/biscgames/cookiebotjs/blob/main/README.md)")
+    }
 })
 
 client.login(token);
