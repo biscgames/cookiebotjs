@@ -10,9 +10,12 @@ const POWER_USRNAME = [
 const fs = require('fs');
 const token = process.env.BOT_TOKEN;
 const { Client, Events, GatewayIntentBits } = require("discord.js");
-let cookies = require("/tmp/userdata.json") ?? {bank:{}};
+let cookies = {bank:{}};
 
 function saveData() { // Save current cookie session
+    if (!fs.existsSync("/tmp")) {
+        fs.mkdirSync("/tmp");
+    }
     fs.writeFileSync("/tmp/userdata.json",JSON.stringify(cookies,null,8));
 }
 
