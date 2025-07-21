@@ -163,9 +163,18 @@ client.on(Events.MessageCreate,async(msg)=>{
     if (command === "!adminid") {
         let stringList = "**Here's the bot admin list:**\n"
         for (let i in POWER_ID) {
-            stringList += `${POWER_ID[i]} (${POWER_USRNAME[i]})\n`;
+            stringList += POWER_ID[i]+(POWER_USRNAME?.[i]!==""?`(${POWER_USRNAME[i]})\n`:"");
         }
         msg.channel.send(stringList);
+    }
+    if (command === "!addadmin") {
+        let id = args?.[0];
+        let name = args?.[0]??"";
+        if (!id) {
+            msg.channel.send("❌: Hey! Enter a user id")
+        }
+        POWER_ID.push(id);
+        POWER_USRNAME.push(name);
     }
     if (command === "!help") {
         msg.reply("Hello! [Please read the github readme for a list of commmands here!](https://github.com/biscgames/cookiebotjs/blob/main/README.md)")
