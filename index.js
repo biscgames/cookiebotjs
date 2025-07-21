@@ -10,10 +10,10 @@ const POWER_USRNAME = [
 const fs = require('fs');
 const token = process.env.BOT_TOKEN;
 const { Client, Events, GatewayIntentBits } = require("discord.js");
-let cookies = require("./userdata.json");
+let cookies = require("/tmp/userdata.json") ?? {bank:{}};
 
 function saveData() { // Save current cookie session
-    fs.writeFileSync("./userdata.json",JSON.stringify(cookies,null,8));
+    fs.writeFileSync("/tmp/userdata.json",JSON.stringify(cookies,null,8));
 }
 
 const client = new Client({
@@ -137,7 +137,7 @@ client.on(Events.MessageCreate,async(msg)=>{
         let authorID = author.id
         cookieCheck(authorID);
         bankCheck(authorID);
-        msg.channel.send(`${author}\n#- ${authorID}\n🏦 **${cookies.bank[authorID]}**\n🍪 **${serverCookies[authorID]}**`);
+        msg.channel.send(`${author}\n#- ${authorID}\n🏦 **${cookies.bank[authorID]}**\n🍪 **${serverCookies[authorID]}**\nNote that if the server restarts it'll all be wiped due to a plan without access to a presistent disk`);
     }
     if (command === "!shutdown") {
         if (!POWER_ID.includes(msg.author.id)) {
